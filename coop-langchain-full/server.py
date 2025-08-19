@@ -39,8 +39,15 @@ async def webhook(request: Request):
         return {"status":"no_messages"}
 
     msg = messages[0]
-    from_id = msg.get("from") or (value.get("contacts", [{}])[0].get("wa_id"))
-    name = (value.get("contacts", [{}])[0].get("profile", {}) or {}).get("name")
+    contacts = value.get("contacts") or []
+    from_id = None
+    name = None
+    if contacts:
+        first_contact = contacts[0]
+        from_id = msg.get("from") or first_contact.get("wa_id")
+        name = (first_contact.get("profile") or {}).get("name")
+    else:
+        from_id = msg.get("from") or None
     text_in = None
 
     if msg.get("type") == "text":
