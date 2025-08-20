@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+gspread
+google-auth
+google-generativeai
+langchain
+langchain-google-genai
+pydantic
+pyyaml
+requests
+google-cloud-secret-manager

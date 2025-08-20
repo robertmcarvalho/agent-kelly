@@ -1,0 +1,40 @@
+nome: CoopMob — Cooperativa de Entregadores (Parceria Flux Farma)
+cota: >
+  Cota de adesão: R$ 500,00 (à vista ou parcelado em até 25x de R$ 20,00,
+  com desconto em folha na segunda quinta-feira de cada mês).
+  Pagamentos semanais (toda quinta), ciclo fecha no domingo e reabre na segunda.
+uniforme_bag: >
+  Uso obrigatório de uniforme (a cooperativa subsidia 50%).
+  Camiseta: R$ 47,00 + frete (desconto em folha na mesma lógica da bag).
+  Bag térmica: R$ 180,00 + frete (parcelamento em 2x, desconto em folha).
+beneficios: >
+  Gestão de entregas organizada (escalas, supervisão, suporte),
+  consultoria operacional aos clientes, prioridade em novas vagas por desempenho,
+  suporte via Unicontato e integração com Flux Farma.
+regras: >
+  Cumprir escalas e orientações dos líderes locais; manter boa conduta,
+  zelar pelo uniforme e bag limpos; comunicar atrasos com antecedência;
+  seguir rotas e interagir pelo app quando solicitado.
+mensagens:
+  apresentacao: >
+    Olá! Eu sou o assistente da CoopMob (parceria Flux Farma). Vou te acompanhar
+    em um processo simples para conhecermos seu perfil e verificar vagas na sua cidade.
+    Posso começar perguntando: em qual cidade você atua?
+  aceite_regras: >
+    Para seguir, preciso confirmar que você concorda com a cota de adesão, regras de uniforme/bag
+    e benefícios explicados. Podemos prosseguir?
+  requisitos: >
+    Ótimo! Para a próxima etapa, confirme por favor:
+    1) Possui moto com documentação em dia?
+    2) Possui CNH categoria A?
+    3) Possui dispositivo Android?
+  aprovado: >
+    Perfeito! Você foi APROVADO na análise. Vou abrir o menu com as vagas disponíveis.
+  reprovado: >
+    Obrigado por avançar no processo. Neste momento, seu perfil não atende aos requisitos mínimos.
+    Você pode voltar a falar comigo quando regularizar os itens necessários.
+faq:
+  endereco: >
+    Nosso escritório administrativo não realiza atendimento ao público. Todo o processo de
+    recrutamento e suporte é feito de forma 100% digital, por aqui mesmo! 😉
+  contato_suporte: "Para suporte ou outras questões, o contato deve ser feito pelo e-mail: contato@coopmob.com.br"
