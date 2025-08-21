@@ -60,7 +60,7 @@ async def webhook(request: Request):
         elif interactive.get("type") == "button_reply":
             text_in = interactive["button_reply"].get("title") or "Botão selecionado"
     elif msg.get("type") == "audio":
-        # opcional: aqui você pode baixar e transcrever com agent.tools.audio.transcribe_media_id
+        # opcional: aqui você pode baixar e transcrever com agent.tools.audio.transcribe_audio_url
         text_in = "Recebi seu áudio. (Transcrição não configurada nesta rota)"
     else:
         text_in = "Olá"
