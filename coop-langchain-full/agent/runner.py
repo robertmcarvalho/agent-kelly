@@ -1,4 +1,5 @@
 import os
+import logging
 from typing import Dict
 # Corrigido: import de langchain_core, que é o local correto para StructuredTool
 from langchain_core.tools import StructuredTool
@@ -89,6 +90,10 @@ def run_agent(user_id: str, wa_id: str | None, text: str) -> str:
     if wa_id: state["user:wa_id"] = wa_id
 
     inputs = {"input": text, "state": state}
-    result = AGENT_EXECUTOR.invoke(inputs)
+    try:
+        result = AGENT_EXECUTOR.invoke(inputs)
+    except Exception as e:
+        logging.exception("Erro ao executar agente")
+        return "Desculpe, ocorreu um erro."
     memory.save(user_id, state)
     return (result.get("output") or "")[:4096]
