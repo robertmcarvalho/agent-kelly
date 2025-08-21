@@ -1,4 +1,5 @@
 import os, requests
+from typing import List
 from .telemetry import timeit, log_event
 
 WA_TOKEN=os.getenv("WHATSAPP_TOKEN")
@@ -14,6 +15,18 @@ def send_text(to: str, body: str)->dict:
         r=requests.post(url, headers={"Authorization": f"Bearer {WA_TOKEN}","Content-Type":"application/json"}, json=payload, timeout=30)
     ok = r.status_code<300
     log_event("wa.send_text", ok=ok, status=r.status_code)
+    return {"sent": ok, "status": r.status_code}
+
+def send_buttons(to: str, body: str, buttons: List[str])->dict:
+    if not (WA_TOKEN and WA_PHONE_ID): return {"sent": False, "reason": "missing_whatsapp_env"}
+    actions=[{"type":"reply","reply":{"id":f"btn_{i}","title":b}} for i,b in enumerate(buttons[:3])]
+    payload={"messaging_product":"whatsapp","to":to,"type":"interactive",
+        "interactive":{"type":"button","body":{"text":body},"action":{"buttons":actions}}}
+    url=_endpoint(f"{WA_PHONE_ID}/messages")
+    with timeit("wa_send_buttons"):
+        r=requests.post(url, headers={"Authorization": f"Bearer {WA_TOKEN}","Content-Type":"application/json"}, json=payload, timeout=30)
+    ok=r.status_code<300
+    log_event("wa.send_buttons", ok=ok, status=r.status_code, buttons=len(actions))
     return {"sent": ok, "status": r.status_code}
 
 def send_vagas_list(to: str, vagas: list, title: str="Vagas Abertas", prompt: str="Escolha uma vaga")->dict:
