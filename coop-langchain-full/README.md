@@ -3,19 +3,21 @@
 Pronto para Cloud Run. Agente em LangChain com ferramentas (Sheets, WhatsApp, Pipefy, avaliação, requisitos) e memória (Upstash) por 5 dias.
 
 ## Rodar local
-```powershell
+```bash
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+source .venv/bin/activate
 pip install -r requirements.txt
-Copy-Item .env.example .env
-notepad .env   # preencha variáveis
+cp .env.example .env
+# edite .env para preencher variáveis
 uvicorn server:app --reload --port 8000
-curl.exe http://localhost:8000/healthz
+curl http://localhost:8000/healthz
 ```
 
 ### Simular webhook WhatsApp
-```powershell
-curl.exe -X POST http://localhost:8000/webhook -H "Content-Type: application/json" --data-binary "@tests\payloads\whatsapp_text.json"
+```bash
+curl -X POST http://localhost:8000/webhook \
+  -H "Content-Type: application/json" \
+  --data-binary @tests/payloads/whatsapp_text.json
 ```
 
 ## Deploy (Cloud Run)
